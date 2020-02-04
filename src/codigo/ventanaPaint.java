@@ -54,7 +54,6 @@ public class ventanaPaint extends javax.swing.JFrame {
     Pincel miPincel = null;
     Recta miRecta = null;
     Spray miSpray = null;
-    
 
     /**
      * Creates new form ventanaPaint
@@ -90,55 +89,56 @@ public class ventanaPaint extends javax.swing.JFrame {
         // pinto el buffer sobre el jpanel
         jpanelGraphics.drawImage(buffer, 0, 0, null);
     }
-  private void guarda() {
-	int seleccion = jFileChooser1.showSaveDialog(this);
-	if (seleccion == JFileChooser.APPROVE_OPTION) {
-	    //Botón de guardar presionado en cualquier JFileChooser
-	    File fichero = jFileChooser1.getSelectedFile();
-	    String nombre = fichero.getName();
-	    String extension = nombre.substring(nombre.lastIndexOf('.') + 1);
-	    if (extension.equalsIgnoreCase("jpg") || extension.equalsIgnoreCase("png")) {
-		try {
-		    ImageIO.write(buffer, extension, fichero);
-		} catch (IOException e) {
-		}
-	    }
-	}
+
+    private void guarda() {
+        int seleccion = jFileChooser1.showSaveDialog(this);
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            //Botón de guardar presionado en cualquier JFileChooser
+            File fichero = jFileChooser1.getSelectedFile();
+            String nombre = fichero.getName();
+            String extension = nombre.substring(nombre.lastIndexOf('.') + 1);
+            if (extension.equalsIgnoreCase("jpg") || extension.equalsIgnoreCase("png")) {
+                try {
+                    ImageIO.write(buffer, extension, fichero);
+                } catch (IOException e) {
+                }
+            }
+        }
     }
 
-
     private void carga() {
-	int seleccion = jFileChooser1.showOpenDialog(this);
-	if (seleccion == JFileChooser.APPROVE_OPTION) {
-	    File fichero = jFileChooser1.getSelectedFile();
-	    String nombre = fichero.getName();
-	    String extension = nombre.substring(nombre.lastIndexOf('.') + 1);
-	    BufferedImage imagen = null;
-	    if (extension.equalsIgnoreCase("jpg") || extension.equalsIgnoreCase("png")) {
-		try {
-		    imagen = ImageIO.read(fichero);
-		    bufferGraphics.drawImage(imagen, 0, 0, null);
-		    bufferGraphics2.drawImage(imagen, 0, 0, null);
-		    repaint();
-		} catch (IOException e) {
-		}
-	    }
-	}
+        int seleccion = jFileChooser1.showOpenDialog(this);
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            File fichero = jFileChooser1.getSelectedFile();
+            String nombre = fichero.getName();
+            String extension = nombre.substring(nombre.lastIndexOf('.') + 1);
+            BufferedImage imagen = null;
+            if (extension.equalsIgnoreCase("jpg") || extension.equalsIgnoreCase("png")) {
+                try {
+                    imagen = ImageIO.read(fichero);
+                    bufferGraphics.drawImage(imagen, 0, 0, null);
+                    bufferGraphics2.drawImage(imagen, 0, 0, null);
+                    repaint();
+                } catch (IOException e) {
+                }
+            }
+        }
     }
 
     Action saveAction = new AbstractAction("Save") {
-	@Override
-	public void actionPerformed(ActionEvent e) {
-	    guarda();
-	}
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            guarda();
+        }
     };
 
     Action loadAction = new AbstractAction("Load") {
-	@Override
-	public void actionPerformed(ActionEvent e) {
-	    carga();
-	}
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            carga();
+        }
     };
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -329,7 +329,7 @@ public class ventanaPaint extends javax.swing.JFrame {
             case 0:
 //                bufferGraphics2.setColor(colores1.colorSeleccionado);
 //                bufferGraphics2.fillOval(evt.getX(), evt.getY(), 4, 4);
-                                miPincel.dibujate(bufferGraphics2, evt.getX(), evt.getY(), herramientas1.lineaGrosor);
+                miPincel.dibujate(bufferGraphics2, evt.getX(), evt.getY(), herramientas1.lineaGrosor);
 
                 break;
 
@@ -358,6 +358,9 @@ public class ventanaPaint extends javax.swing.JFrame {
             case 7:
                 miPincel.dibujate(bufferGraphics2, evt.getX(), evt.getY(), herramientas1.lineaGrosor);
                 break;
+            case 8:
+                miSpray = new Spray(evt.getX(), evt.getY(), colores1.colorSeleccionado);
+                miSpray.dibujate(bufferGraphics2, evt.getX(), evt.getY(), herramientas1.lineaGrosor);
     }//GEN-LAST:event_jPanel1MouseDragged
         repaint(0, 0, 1, 1);
     }
@@ -366,7 +369,7 @@ public class ventanaPaint extends javax.swing.JFrame {
             case 0:
 //                dibujoLibre = new DibujoLibre(evt.getX(), evt.getY(), colores1.colorSeleccionado);
 //                dibujoLibre.dibujate(bufferGraphics, evt.getX(), evt.getY());
-  if (herramientas1.goma) {
+                if (herramientas1.goma) {
                     miPincel = new Pincel(evt.getX(), evt.getY(), colores1.colorSeleccionadoGoma);
                 } else {
                     miPincel = new Pincel(evt.getX(), evt.getY(), colores1.colorSeleccionado);
@@ -413,6 +416,16 @@ public class ventanaPaint extends javax.swing.JFrame {
                 }
 
                 miPincel.dibujate(bufferGraphics, evt.getX(), evt.getY(), herramientas1.lineaGrosor);
+                break;
+            case 8:
+                miSpray = new Spray(evt.getX(), evt.getY(), colores1.colorSeleccionado);
+                miSpray.dibujate(bufferGraphics, evt.getX(), evt.getY(), herramientas1.lineaGrosor);
+                break;
+            case 9:
+                 Color c = new Color(buffer2.getRGB(evt.getX(), evt.getY()), true);
+                colores1.colorSeleccionado = c;
+              //  colores1.colorSeleccionado.set;
+                break;
         }
     }//GEN-LAST:event_jPanel1MousePressed
 
@@ -432,6 +445,7 @@ public class ventanaPaint extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         jDialog1.setVisible(true);
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -441,6 +455,7 @@ public class ventanaPaint extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         jDialog1.setVisible(false);
         colores1.colorSeleccionado = jColorChooser1.getColor();
+        colores1.jLabel14.setBackground(jColorChooser1.getColor());
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -470,7 +485,7 @@ public class ventanaPaint extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem2MousePressed
-       carga();
+        carga();
     }//GEN-LAST:event_jMenuItem2MousePressed
 
     private void jMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MousePressed
