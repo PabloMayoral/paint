@@ -14,6 +14,7 @@ import codigo.formas.Linea;
 import codigo.formas.Pincel;
 import codigo.formas.Recta;
 import codigo.formas.Spray;
+import codigo.formas.Trazo;
 import codigo.formas.Triangulo;
 import codigo.formas.pentagono;
 import java.awt.BasicStroke;
@@ -21,6 +22,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -28,6 +30,7 @@ import javax.imageio.ImageIO;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JFileChooser;
+import javax.swing.KeyStroke;
 
 /**
  *
@@ -62,6 +65,11 @@ public class ventanaPaint extends javax.swing.JFrame {
         initComponents();
         inicializaBuffers();
         jDialog1.setSize(640, 450);
+        saveAction.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_DOWN_MASK));
+	jMenuItem1.setAction(saveAction);
+	loadAction.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_O, KeyEvent.CTRL_DOWN_MASK));
+	jMenuItem2.setAction(loadAction);
+        backAction.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_Z, KeyEvent.CTRL_DOWN_MASK));
     }
 
     private void inicializaBuffers() {
@@ -138,6 +146,12 @@ public class ventanaPaint extends javax.swing.JFrame {
             carga();
         }
     };
+     Action backAction = new AbstractAction("back") {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+         
+        }
+    };
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -163,6 +177,7 @@ public class ventanaPaint extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
 
         jButton2.setText("CANCELAR");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -277,6 +292,14 @@ public class ventanaPaint extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuItem2);
+
+        jMenuItem3.setText("Deshacer");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem3);
 
         jMenuBar1.add(jMenu1);
 
@@ -426,8 +449,25 @@ public class ventanaPaint extends javax.swing.JFrame {
             case 9:
                  Color c = new Color(buffer2.getRGB(evt.getX(), evt.getY()), true);
                 colores1.colorSeleccionado = c;
-              //  colores1.colorSeleccionado.set;
+                        colores1.jLabel14.setBackground(colores1.colorSeleccionado);
+
                 break;
+                default:
+		// Sobreescribe el lienzo
+		if (!herramientas1.jCheckBox3.isSelected()) {
+		    bufferGraphics.drawImage(buffer2, 0, 0, null);
+		}
+		// Dibuja la forma
+		if (!herramientas1.jCheckBox2.isSelected()) {
+		    miForma.dibujate(bufferGraphics, evt.getX(), evt.getY());
+		} else {
+		    miForma.dibujate(bufferGraphics, evt.getX(), evt.getY());
+		}
+		break;
+                             
+
+              //  colores1.colorSeleccionado.set;
+              
                 
         }
     }//GEN-LAST:event_jPanel1MousePressed
@@ -495,6 +535,10 @@ public class ventanaPaint extends javax.swing.JFrame {
         guarda();
     }//GEN-LAST:event_jMenuItem1MousePressed
 
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -544,6 +588,7 @@ public class ventanaPaint extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSlider jSlider1;
     // End of variables declaration//GEN-END:variables

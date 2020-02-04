@@ -190,6 +190,11 @@ public class Herramientas extends javax.swing.JPanel {
 
         jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pipeta.png"))); // NOI18N
         jButton12.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -348,6 +353,10 @@ public class Herramientas extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jSpinner1MouseReleased
 
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+       formaElegida = 9;
+    }//GEN-LAST:event_jButton12ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -363,8 +372,8 @@ public class Herramientas extends javax.swing.JPanel {
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
+    public javax.swing.JCheckBox jCheckBox2;
+    public javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JSlider jSlider1;
     private javax.swing.JSpinner jSpinner1;
     // End of variables declaration//GEN-END:variables

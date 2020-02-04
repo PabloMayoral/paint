@@ -23,4 +23,5 @@ public class Trazo extends BasicStroke {
     public Trazo(int _grosor, boolean rayas, boolean redondo) {
 	super(_grosor, BasicStroke.CAP_ROUND, BasicStroke.JOIN_MITER, 1.0f);
     }
+    
 }
