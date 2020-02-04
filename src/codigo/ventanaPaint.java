@@ -124,7 +124,7 @@ public class ventanaPaint extends javax.swing.JFrame {
             }
         }
     }
-
+ 
     Action saveAction = new AbstractAction("Save") {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -361,6 +361,8 @@ public class ventanaPaint extends javax.swing.JFrame {
             case 8:
                 miSpray = new Spray(evt.getX(), evt.getY(), colores1.colorSeleccionado);
                 miSpray.dibujate(bufferGraphics2, evt.getX(), evt.getY(), herramientas1.lineaGrosor);
+                break;
+                
     }//GEN-LAST:event_jPanel1MouseDragged
         repaint(0, 0, 1, 1);
     }
@@ -426,6 +428,7 @@ public class ventanaPaint extends javax.swing.JFrame {
                 colores1.colorSeleccionado = c;
               //  colores1.colorSeleccionado.set;
                 break;
+                
         }
     }//GEN-LAST:event_jPanel1MousePressed
 

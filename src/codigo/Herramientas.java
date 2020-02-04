@@ -5,6 +5,9 @@
  */
 package codigo;
 
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+
 /**
  *
  * @author pmart
@@ -12,12 +15,16 @@ package codigo;
 public class Herramientas extends javax.swing.JPanel {
 
     //indica cual de las formas se va a dibujar
-    public int formaElegida ;
-    
+    public int formaElegida;
+
     //indica sinla figura se tiene que pintar rellena o no
     public boolean relleno = false;
     int lineaGrosor = 1;
     boolean goma = false;
+    BufferedImage buffer, buffer2 = null;
+
+    Graphics2D bufferGraphics, bufferGraphics2, jpanelGraphics = null;
+
    
 
     /**
@@ -293,7 +300,7 @@ public class Herramientas extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
-
+     
     }//GEN-LAST:event_jCheckBox2ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -309,8 +316,8 @@ public class Herramientas extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jSlider1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSlider1MouseDragged
-       jSpinner1.setValue(jSlider1.getValue());
-       
+        jSpinner1.setValue(jSlider1.getValue());
+
     }//GEN-LAST:event_jSlider1MouseDragged
 
     private void jSlider1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSlider1MouseReleased
@@ -318,21 +325,21 @@ public class Herramientas extends javax.swing.JPanel {
     }//GEN-LAST:event_jSlider1MouseReleased
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-       formaElegida = 7;
-       goma = false;
+        formaElegida = 7;
+        goma = false;
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-       formaElegida = 7;
-       goma = true;
+        formaElegida = 7;
+        goma = true;
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-       formaElegida = 8;
+        formaElegida = 8;
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jSpinner1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner1StateChanged
-        	jSlider1.setValue((int) jSpinner1.getValue());
+        jSlider1.setValue((int) jSpinner1.getValue());
 
     }//GEN-LAST:event_jSpinner1StateChanged
 
