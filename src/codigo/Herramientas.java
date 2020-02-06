@@ -10,7 +10,7 @@ import java.awt.image.BufferedImage;
 
 /**
  *
- * @author pmart
+ * @author Pablo Martin
  */
 public class Herramientas extends javax.swing.JPanel {
 
@@ -19,7 +19,9 @@ public class Herramientas extends javax.swing.JPanel {
 
     //indica sinla figura se tiene que pintar rellena o no
     public boolean relleno = false;
+    //int para el grosor del dibujo
     int lineaGrosor = 1;
+    //indica si esta la gomo o no
     boolean goma = false;
     BufferedImage buffer, buffer2 = null;
 
@@ -326,6 +328,7 @@ public class Herramientas extends javax.swing.JPanel {
     }//GEN-LAST:event_jSlider1MouseDragged
 
     private void jSlider1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSlider1MouseReleased
+        //enlaza el grosor con el slider
         lineaGrosor = jSlider1.getValue();
     }//GEN-LAST:event_jSlider1MouseReleased
 
@@ -344,6 +347,7 @@ public class Herramientas extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jSpinner1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner1StateChanged
+        //enlaza el slider con el spiner
         jSlider1.setValue((int) jSpinner1.getValue());
 
     }//GEN-LAST:event_jSpinner1StateChanged

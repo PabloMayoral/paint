@@ -9,9 +9,10 @@ import java.awt.Color;
 
 /**
  *
- * @author pmart
+ * @author Pablo Martin
  */
 public class Cuadrado extends Formas {
+    //lo neceserario para crear el cuadrado
     public Cuadrado (int _posX, int _posY, Color _color, boolean _relleno) {
 	//Inicializa el constructo del cuadrado correctamente con 3 lados
 	super(_posX, _posY, 4, _color, _relleno);

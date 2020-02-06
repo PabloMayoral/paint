@@ -12,7 +12,7 @@ import java.awt.Polygon;
 
 /**
  *
- * @author pmart
+ * @author Pablo Martin
  */
 
  public class Recta extends Polygon {

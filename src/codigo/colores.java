@@ -10,12 +10,14 @@ import javax.swing.JLabel;
 
 /**
  *
- * @author pmart
+ * @author Pablo Martin
  */
 public class colores extends javax.swing.JPanel {
-public Color colorSeleccionado = Color.black;
-  public Color colorSeleccionadoGoma = Color.white;//Color con el que se borra
-    public Color aux= Color.white;//Guardaremos el color cuando cambiemos el pintar por el borrar
+
+    public Color colorSeleccionado = Color.black;
+    public Color colorSeleccionadoGoma = Color.white;//Color con el que se borra
+    public Color aux = Color.white;//Guardaremos el color cuando cambiemos el pintar por el borrar
+
     /**
      * Creates new form colores
      */
@@ -230,20 +232,21 @@ public Color colorSeleccionado = Color.black;
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MousePressed
+       //cuando seleccionas el color aparece indicado en el jLabel14
         JLabel s = (JLabel) evt.getSource();
         colorSeleccionado = s.getBackground();
         jLabel14.setBackground(colorSeleccionado);
     }//GEN-LAST:event_jLabel2MousePressed
 
     private void jLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MousePressed
- JLabel s = (JLabel) evt.getSource();
-        colorSeleccionado = s.getBackground();    
-          jLabel14.setBackground(colorSeleccionado);
-        
+        JLabel s = (JLabel) evt.getSource();
+        colorSeleccionado = s.getBackground();
+        jLabel14.setBackground(colorSeleccionado);
+
 }//GEN-LAST:event_jLabel1MousePressed
 
     private void jLabel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MousePressed
-          JLabel s = (JLabel) evt.getSource();
+        JLabel s = (JLabel) evt.getSource();
         colorSeleccionado = s.getBackground();
         jLabel14.setBackground(colorSeleccionado);
     }//GEN-LAST:event_jLabel3MousePressed
@@ -261,13 +264,13 @@ public Color colorSeleccionado = Color.black;
     }//GEN-LAST:event_jLabel5MousePressed
 
     private void jLabel6MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MousePressed
-       JLabel s = (JLabel) evt.getSource();
+        JLabel s = (JLabel) evt.getSource();
         colorSeleccionado = s.getBackground();
         jLabel14.setBackground(colorSeleccionado);
     }//GEN-LAST:event_jLabel6MousePressed
 
     private void jLabel7MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MousePressed
-       JLabel s = (JLabel) evt.getSource();
+        JLabel s = (JLabel) evt.getSource();
         colorSeleccionado = s.getBackground();
         jLabel14.setBackground(colorSeleccionado);
     }//GEN-LAST:event_jLabel7MousePressed
@@ -279,19 +282,19 @@ public Color colorSeleccionado = Color.black;
     }//GEN-LAST:event_jLabel8MousePressed
 
     private void jLabel9MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MousePressed
-       JLabel s = (JLabel) evt.getSource();
+        JLabel s = (JLabel) evt.getSource();
         colorSeleccionado = s.getBackground();
         jLabel14.setBackground(colorSeleccionado);
     }//GEN-LAST:event_jLabel9MousePressed
 
     private void jLabel10MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MousePressed
-       JLabel s = (JLabel) evt.getSource();
+        JLabel s = (JLabel) evt.getSource();
         colorSeleccionado = s.getBackground();
         jLabel14.setBackground(colorSeleccionado);
     }//GEN-LAST:event_jLabel10MousePressed
 
     private void jLabel11MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MousePressed
-       JLabel s = (JLabel) evt.getSource();
+        JLabel s = (JLabel) evt.getSource();
         colorSeleccionado = s.getBackground();
         jLabel14.setBackground(colorSeleccionado);
     }//GEN-LAST:event_jLabel11MousePressed

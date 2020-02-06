@@ -9,7 +9,7 @@ import java.awt.Color;
 
 /**
  *
- * @author pmart
+ * @author Pablo Martin
  */
 public class Linea extends Formas{
     public Linea(int _posX, int _posY, Color _color, boolean _relleno) {

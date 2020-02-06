@@ -7,7 +7,7 @@ package codigo;
 
 import codigo.formas.Circulo;
 import codigo.formas.Cuadrado;
-import codigo.formas.DibujoLibre;
+
 import codigo.formas.Estrella;
 import codigo.formas.Formas;
 import codigo.formas.Linea;
@@ -45,10 +45,7 @@ public class ventanaPaint extends javax.swing.JFrame {
     Circulo miCirculo = null;
 
     Formas miForma = new Formas(-1, -1, 1, Color.WHITE, false);
-    DibujoLibre dibujoLibre = null;
-
-   
-   
+ 
     Pincel miPincel = null;
     Recta miRecta = null;
     Spray miSpray = null;

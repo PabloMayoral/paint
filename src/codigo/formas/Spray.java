@@ -13,7 +13,7 @@ import java.util.Random;
 
 /**
  *
- * @author pmart
+ * @author Pablo Martin
  */
 public class Spray extends Polygon {
 

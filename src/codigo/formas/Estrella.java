@@ -9,7 +9,7 @@ import java.awt.Color;
 
 /**
  *
- * @author pmart
+ * @author Pablo Martin
  */
 public class Estrella extends Formas{
     
@@ -19,6 +19,7 @@ public class Estrella extends Formas{
     }
     
     @Override
+    //los aclculos necesarios para crear la estrella
     public void calculaVertices (int _radio, double _giro){
         int n= 20;
         for (int i=0; i< npoints; i++){

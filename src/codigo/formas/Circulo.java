@@ -11,7 +11,7 @@ import java.awt.geom.Ellipse2D;
 
 /**
  *
- * @author Alejandro Luna Gomez
+ * @author Pablo Martin
  */
 public class Circulo extends Ellipse2D.Double{
     public Color color = Color.BLACK;
@@ -19,6 +19,7 @@ public class Circulo extends Ellipse2D.Double{
     
     public Circulo(int _posX, int _posY, int _diametro, Color _color, boolean _relleno){
         super();
+        //parametros para hacer el circulo
         x = _posX; // asigno la _posX que me pasan al construir 
                    //el objeto a la propiedad x de los ellips2D.double
         y = _posY;

@@ -5,7 +5,7 @@ import java.awt.Color;
 
 /**
  *
- * @author pmart
+ * @author Pablo Martin
  */
 public class pentagono extends Formas{
     

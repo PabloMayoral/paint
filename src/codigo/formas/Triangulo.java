@@ -9,7 +9,7 @@ import java.awt.Color;
 
 /**
  *
- * @author pmart
+ * @author Pablo Martin
  */
 public class Triangulo extends Formas {
     

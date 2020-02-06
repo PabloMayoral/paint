@@ -9,11 +9,12 @@ import java.awt.BasicStroke;
 
 /**
  *
- * @author pmart
+ * @author Pablo Martin
  */
 public class Trazo extends BasicStroke {
 
     public Trazo(int _grosor) {
+      //grosor
         super(_grosor);
     }
  public Trazo(int _grosor, boolean rayas) {
