@@ -47,13 +47,8 @@ public class ventanaPaint extends javax.swing.JFrame {
     Formas miForma = new Formas(-1, -1, 1, Color.WHITE, false);
     DibujoLibre dibujoLibre = null;
 
-    int posLapizX = 0;
-    int posLapizY = 0;
-    int posLapizXX = 0;
-    int posLapizYY = 0;
-    BasicStroke trazo1 = new BasicStroke(15);
-    BasicStroke trazo2 = new BasicStroke(15, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 10.0f, new float[]{10.0f}, 0.0f);
-
+   
+   
     Pincel miPincel = null;
     Recta miRecta = null;
     Spray miSpray = null;
@@ -64,11 +59,14 @@ public class ventanaPaint extends javax.swing.JFrame {
     public ventanaPaint() {
         initComponents();
         inicializaBuffers();
-        jDialog1.setSize(640, 450);
+        jDialog1.setSize(640, 450);//dimensiones del dialog
+        //guardar usando control+s
         saveAction.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_DOWN_MASK));
 	jMenuItem1.setAction(saveAction);
+        //cargar usando control+o
 	loadAction.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_O, KeyEvent.CTRL_DOWN_MASK));
 	jMenuItem2.setAction(loadAction);
+        //intento para el control+z
         backAction.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_Z, KeyEvent.CTRL_DOWN_MASK));
     }
 
@@ -97,7 +95,7 @@ public class ventanaPaint extends javax.swing.JFrame {
         // pinto el buffer sobre el jpanel
         jpanelGraphics.drawImage(buffer, 0, 0, null);
     }
-
+//public void que usamos para guardar los dibus realizados
     private void guarda() {
         int seleccion = jFileChooser1.showSaveDialog(this);
         if (seleccion == JFileChooser.APPROVE_OPTION) {
@@ -113,7 +111,7 @@ public class ventanaPaint extends javax.swing.JFrame {
             }
         }
     }
-
+//public void para poder cargar los dibus guardados anteriormente
     private void carga() {
         int seleccion = jFileChooser1.showOpenDialog(this);
         if (seleccion == JFileChooser.APPROVE_OPTION) {
@@ -346,41 +344,43 @@ public class ventanaPaint extends javax.swing.JFrame {
 
         bufferGraphics.drawImage(buffer2, 0, 0, null);
         switch (herramientas1.formaElegida) {
-
-//               case 0: dibujoLibre.dibujate (bufferGraphics, evt.getX(), evt.getY());
-//                    break;
+            //case 0 para el dibujo libre bien hecho
             case 0:
-//                bufferGraphics2.setColor(colores1.colorSeleccionado);
-//                bufferGraphics2.fillOval(evt.getX(), evt.getY(), 4, 4);
                 miPincel.dibujate(bufferGraphics2, evt.getX(), evt.getY(), herramientas1.lineaGrosor);
-
                 break;
-
+             //case 1 para dibujar circulos
             case 1:
                 miCirculo.dibujate(bufferGraphics, evt.getX());
                 break;
+           //case5 para dibujar el pentagono
             case 5:
-
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY());
                 break;
+                //case 256 para dibujar la estrella
             case 256:
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY());
                 break;
+                //case 4 para dibujar el cuadrado
             case 4:
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY());
                 break;
+                //case para el dibujo libre
             case 2:
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY());
                 break;
+                //case 3 para dibujar el triangulo
             case 3:
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY());
                 break;
+                //case 6 para dibujar lineas rectas
             case 6:
                 miRecta.dibujate(bufferGraphics, evt.getX(), evt.getY(), herramientas1.lineaGrosor);
                 break;
+                //case 7 para dibujo libre
             case 7:
                 miPincel.dibujate(bufferGraphics2, evt.getX(), evt.getY(), herramientas1.lineaGrosor);
                 break;
+                //case 8 para el spray
             case 8:
                 miSpray = new Spray(evt.getX(), evt.getY(), colores1.colorSeleccionado);
                 miSpray.dibujate(bufferGraphics2, evt.getX(), evt.getY(), herramientas1.lineaGrosor);
@@ -391,9 +391,9 @@ public class ventanaPaint extends javax.swing.JFrame {
     }
     private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
         switch (herramientas1.formaElegida) {
+          //case para el dibujo libre y la goma
             case 0:
-//                dibujoLibre = new DibujoLibre(evt.getX(), evt.getY(), colores1.colorSeleccionado);
-//                dibujoLibre.dibujate(bufferGraphics, evt.getX(), evt.getY());
+
                 if (herramientas1.goma) {
                     miPincel = new Pincel(evt.getX(), evt.getY(), colores1.colorSeleccionadoGoma);
                 } else {
@@ -402,37 +402,42 @@ public class ventanaPaint extends javax.swing.JFrame {
 
                 miPincel.dibujate(bufferGraphics, evt.getX(), evt.getY(), herramientas1.lineaGrosor);
                 break;
+                //crea el circulo
             case 1:
                 miCirculo = new Circulo(evt.getX(), evt.getY(), 1, colores1.colorSeleccionado, herramientas1.relleno);
                 miCirculo.dibujate(bufferGraphics, evt.getX());
                 break;
+                //crea el pentagono
             case 5:
                 miForma = new pentagono(evt.getX(), evt.getY(), 5, colores1.colorSeleccionado, herramientas1.relleno);
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY());
                 break;
+                //crea la estrella
             case 256:
                 miForma = new Estrella(evt.getX(), evt.getY(), 256, colores1.colorSeleccionado, herramientas1.relleno);
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY());
                 break;
+                //crea el cuadrado
             case 4:
                 miForma = new Cuadrado(evt.getX(), evt.getY(), colores1.colorSeleccionado, herramientas1.relleno);
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY());
-
                 break;
+                //crea la linea recta
             case 2:
                 miForma = new Linea(evt.getX(), evt.getY(), colores1.colorSeleccionado, herramientas1.relleno);
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY());
-
                 break;
+                //crea el triangulo
             case 3:
                 miForma = new Triangulo(evt.getX(), evt.getY(), 4, colores1.colorSeleccionado, herramientas1.relleno);
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY());
-
                 break;
+                //crea la linea recta
             case 6:
                 miRecta = new Recta(evt.getX(), evt.getY(), colores1.colorSeleccionado);
                 miRecta.dibujate(bufferGraphics, evt.getX(), evt.getY(), herramientas1.lineaGrosor);
                 break;
+                //lo mismo que en el case 0
             case 7:
                 if (herramientas1.goma) {
                     miPincel = new Pincel(evt.getX(), evt.getY(), colores1.colorSeleccionadoGoma);
@@ -442,33 +447,17 @@ public class ventanaPaint extends javax.swing.JFrame {
 
                 miPincel.dibujate(bufferGraphics, evt.getX(), evt.getY(), herramientas1.lineaGrosor);
                 break;
+                //crea el spray
             case 8:
                 miSpray = new Spray(evt.getX(), evt.getY(), colores1.colorSeleccionado);
                 miSpray.dibujate(bufferGraphics, evt.getX(), evt.getY(), herramientas1.lineaGrosor);
                 break;
+                //crea la pipeta
             case 9:
                  Color c = new Color(buffer2.getRGB(evt.getX(), evt.getY()), true);
                 colores1.colorSeleccionado = c;
                         colores1.jLabel14.setBackground(colores1.colorSeleccionado);
-
                 break;
-                default:
-		// Sobreescribe el lienzo
-		if (!herramientas1.jCheckBox3.isSelected()) {
-		    bufferGraphics.drawImage(buffer2, 0, 0, null);
-		}
-		// Dibuja la forma
-		if (!herramientas1.jCheckBox2.isSelected()) {
-		    miForma.dibujate(bufferGraphics, evt.getX(), evt.getY());
-		} else {
-		    miForma.dibujate(bufferGraphics, evt.getX(), evt.getY());
-		}
-		break;
-                             
-
-              //  colores1.colorSeleccionado.set;
-              
-                
         }
     }//GEN-LAST:event_jPanel1MousePressed
 
@@ -477,7 +466,7 @@ public class ventanaPaint extends javax.swing.JFrame {
 
         //si se dibuja el circulo se dibuja en el buffergraphics2
         miForma.dibujate(bufferGraphics2, evt.getX(), evt.getY());
-        //si se dibuja el circulo se dibuja en el buffergraphics2
+        //los if son para que se guarde el dibujo de las formas dibujadas del circulo y las lineas rectas
         if (herramientas1.formaElegida == 1) {
             miCirculo.dibujate(bufferGraphics2, evt.getX());
 
@@ -487,40 +476,24 @@ public class ventanaPaint extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel1MouseReleased
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       //el dialog se vuelve visible
         jDialog1.setVisible(true);
-
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+      //el dialog se oculta
         jDialog1.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        //el dialog esta oculto y una vez se ha seleccionado el color deseado aparece el color en el jLabel
         jDialog1.setVisible(false);
         colores1.colorSeleccionado = jColorChooser1.getColor();
         colores1.jLabel14.setBackground(jColorChooser1.getColor());
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        int seleccion = jFileChooser1.showSaveDialog(this);
-        if (seleccion == JFileChooser.APPROVE_OPTION) {
-            //SI ENTRA AQUI ES PORQUE EL USUARIO A PULSADO EN "GUARDAR"
-            File fichero = jFileChooser1.getSelectedFile();
-            String nombre = fichero.getName();
-            String extension = nombre.substring(nombre.lastIndexOf('.') + 1, nombre.length());
-            if (extension.equalsIgnoreCase("jpg") || extension.equalsIgnoreCase("png")) {
-
-                try {
-                    bufferGraphics.drawImage(ImageIO.read(fichero), 0, 0, null);
-                    bufferGraphics2.drawImage(ImageIO.read(fichero), 0, 0, null);
-                    repaint(0, 0, 1, 1);
-                } catch (IOException o) {
-
-                }
-            } else {
-                //mensaje de extension no valida
-            }
-        }
+       
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
