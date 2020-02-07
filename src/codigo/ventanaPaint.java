@@ -10,14 +10,13 @@ import codigo.formas.Cuadrado;
 
 import codigo.formas.Estrella;
 import codigo.formas.Formas;
+import codigo.formas.Limpiar;
 import codigo.formas.Linea;
 import codigo.formas.Pincel;
 import codigo.formas.Recta;
 import codigo.formas.Spray;
-import codigo.formas.Trazo;
 import codigo.formas.Triangulo;
 import codigo.formas.pentagono;
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -45,10 +44,12 @@ public class ventanaPaint extends javax.swing.JFrame {
     Circulo miCirculo = null;
 
     Formas miForma = new Formas(-1, -1, 1, Color.WHITE, false);
- 
+
     Pincel miPincel = null;
     Recta miRecta = null;
     Spray miSpray = null;
+
+    Limpiar miLimpiar = null;
 
     /**
      * Creates new form ventanaPaint
@@ -59,10 +60,10 @@ public class ventanaPaint extends javax.swing.JFrame {
         jDialog1.setSize(640, 450);//dimensiones del dialog
         //guardar usando control+s
         saveAction.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_DOWN_MASK));
-	jMenuItem1.setAction(saveAction);
+        jMenuItem1.setAction(saveAction);
         //cargar usando control+o
-	loadAction.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_O, KeyEvent.CTRL_DOWN_MASK));
-	jMenuItem2.setAction(loadAction);
+        loadAction.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_O, KeyEvent.CTRL_DOWN_MASK));
+        jMenuItem2.setAction(loadAction);
         //intento para el control+z
         backAction.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_Z, KeyEvent.CTRL_DOWN_MASK));
     }
@@ -93,6 +94,7 @@ public class ventanaPaint extends javax.swing.JFrame {
         jpanelGraphics.drawImage(buffer, 0, 0, null);
     }
 //public void que usamos para guardar los dibus realizados
+
     private void guarda() {
         int seleccion = jFileChooser1.showSaveDialog(this);
         if (seleccion == JFileChooser.APPROVE_OPTION) {
@@ -109,6 +111,7 @@ public class ventanaPaint extends javax.swing.JFrame {
         }
     }
 //public void para poder cargar los dibus guardados anteriormente
+
     private void carga() {
         int seleccion = jFileChooser1.showOpenDialog(this);
         if (seleccion == JFileChooser.APPROVE_OPTION) {
@@ -127,7 +130,7 @@ public class ventanaPaint extends javax.swing.JFrame {
             }
         }
     }
- 
+
     Action saveAction = new AbstractAction("Save") {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -141,10 +144,10 @@ public class ventanaPaint extends javax.swing.JFrame {
             carga();
         }
     };
-     Action backAction = new AbstractAction("back") {
+    Action backAction = new AbstractAction("back") {
         @Override
         public void actionPerformed(ActionEvent e) {
-         
+
         }
     };
 
@@ -308,8 +311,9 @@ public class ventanaPaint extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
                         .addComponent(herramientas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(colores1, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -323,13 +327,12 @@ public class ventanaPaint extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(herramientas1, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(colores1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
+                        .addComponent(colores1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(herramientas1, javax.swing.GroupLayout.DEFAULT_SIZE, 432, Short.MAX_VALUE))
+                .addGap(18, 24, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(39, 39, 39))
         );
@@ -345,50 +348,50 @@ public class ventanaPaint extends javax.swing.JFrame {
             case 0:
                 miPincel.dibujate(bufferGraphics2, evt.getX(), evt.getY(), herramientas1.lineaGrosor);
                 break;
-             //case 1 para dibujar circulos
+            //case 1 para dibujar circulos
             case 1:
                 miCirculo.dibujate(bufferGraphics, evt.getX());
                 break;
-           //case5 para dibujar el pentagono
+            //case5 para dibujar el pentagono
             case 5:
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY());
                 break;
-                //case 256 para dibujar la estrella
+            //case 256 para dibujar la estrella
             case 256:
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY());
                 break;
-                //case 4 para dibujar el cuadrado
+            //case 4 para dibujar el cuadrado
             case 4:
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY());
                 break;
-                //case para el dibujo libre
+            //case para el dibujo libre
             case 2:
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY());
                 break;
-                //case 3 para dibujar el triangulo
+            //case 3 para dibujar el triangulo
             case 3:
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY());
                 break;
-                //case 6 para dibujar lineas rectas
+            //case 6 para dibujar lineas rectas
             case 6:
                 miRecta.dibujate(bufferGraphics, evt.getX(), evt.getY(), herramientas1.lineaGrosor);
                 break;
-                //case 7 para dibujo libre
+            //case 7 para dibujo libre
             case 7:
                 miPincel.dibujate(bufferGraphics2, evt.getX(), evt.getY(), herramientas1.lineaGrosor);
                 break;
-                //case 8 para el spray
+            //case 8 para el spray
             case 8:
                 miSpray = new Spray(evt.getX(), evt.getY(), colores1.colorSeleccionado);
                 miSpray.dibujate(bufferGraphics2, evt.getX(), evt.getY(), herramientas1.lineaGrosor);
                 break;
-                
+
     }//GEN-LAST:event_jPanel1MouseDragged
         repaint(0, 0, 1, 1);
     }
     private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
         switch (herramientas1.formaElegida) {
-          //case para el dibujo libre y la goma
+            //case para el dibujo libre y la goma
             case 0:
 
                 if (herramientas1.goma) {
@@ -399,42 +402,42 @@ public class ventanaPaint extends javax.swing.JFrame {
 
                 miPincel.dibujate(bufferGraphics, evt.getX(), evt.getY(), herramientas1.lineaGrosor);
                 break;
-                //crea el circulo
+            //crea el circulo
             case 1:
                 miCirculo = new Circulo(evt.getX(), evt.getY(), 1, colores1.colorSeleccionado, herramientas1.relleno);
                 miCirculo.dibujate(bufferGraphics, evt.getX());
                 break;
-                //crea el pentagono
+            //crea el pentagono
             case 5:
                 miForma = new pentagono(evt.getX(), evt.getY(), 5, colores1.colorSeleccionado, herramientas1.relleno);
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY());
                 break;
-                //crea la estrella
+            //crea la estrella
             case 256:
                 miForma = new Estrella(evt.getX(), evt.getY(), 256, colores1.colorSeleccionado, herramientas1.relleno);
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY());
                 break;
-                //crea el cuadrado
+            //crea el cuadrado
             case 4:
                 miForma = new Cuadrado(evt.getX(), evt.getY(), colores1.colorSeleccionado, herramientas1.relleno);
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY());
                 break;
-                //crea la linea recta
+            //crea la linea recta
             case 2:
                 miForma = new Linea(evt.getX(), evt.getY(), colores1.colorSeleccionado, herramientas1.relleno);
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY());
                 break;
-                //crea el triangulo
+            //crea el triangulo
             case 3:
                 miForma = new Triangulo(evt.getX(), evt.getY(), 4, colores1.colorSeleccionado, herramientas1.relleno);
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY());
                 break;
-                //crea la linea recta
+            //crea la linea recta
             case 6:
                 miRecta = new Recta(evt.getX(), evt.getY(), colores1.colorSeleccionado);
                 miRecta.dibujate(bufferGraphics, evt.getX(), evt.getY(), herramientas1.lineaGrosor);
                 break;
-                //lo mismo que en el case 0
+            //lo mismo que en el case 0
             case 7:
                 if (herramientas1.goma) {
                     miPincel = new Pincel(evt.getX(), evt.getY(), colores1.colorSeleccionadoGoma);
@@ -444,16 +447,19 @@ public class ventanaPaint extends javax.swing.JFrame {
 
                 miPincel.dibujate(bufferGraphics, evt.getX(), evt.getY(), herramientas1.lineaGrosor);
                 break;
-                //crea el spray
+            //crea el spray
             case 8:
                 miSpray = new Spray(evt.getX(), evt.getY(), colores1.colorSeleccionado);
                 miSpray.dibujate(bufferGraphics, evt.getX(), evt.getY(), herramientas1.lineaGrosor);
                 break;
-                //crea la pipeta
+            //crea la pipeta
             case 9:
-                 Color c = new Color(buffer2.getRGB(evt.getX(), evt.getY()), true);
+                Color c = new Color(buffer2.getRGB(evt.getX(), evt.getY()), true);
                 colores1.colorSeleccionado = c;
-                        colores1.jLabel14.setBackground(colores1.colorSeleccionado);
+                colores1.jLabel14.setBackground(colores1.colorSeleccionado);
+                break;
+            case 16:
+
                 break;
         }
     }//GEN-LAST:event_jPanel1MousePressed
@@ -473,12 +479,12 @@ public class ventanaPaint extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel1MouseReleased
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       //el dialog se vuelve visible
+        //el dialog se vuelve visible
         jDialog1.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      //el dialog se oculta
+        //el dialog se oculta
         jDialog1.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -490,7 +496,7 @@ public class ventanaPaint extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-       
+
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -506,7 +512,11 @@ public class ventanaPaint extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1MousePressed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
+        miLimpiar = new Limpiar();
+        miLimpiar.dibujate(bufferGraphics2, jPanel1);
+        bufferGraphics.drawImage(buffer2, 0, 0, null);
+        bufferGraphics2.drawImage(buffer2, 0, 0, null);
+        repaint(0, 0, 1, 1);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
