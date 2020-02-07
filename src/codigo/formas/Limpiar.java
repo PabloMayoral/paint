@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author pmart
+ * @author Pablo Martin
  */
 public class Limpiar extends Polygon {
 
