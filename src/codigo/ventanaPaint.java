@@ -35,7 +35,7 @@ import javax.swing.KeyStroke;
 
 /**
  *
- * @author pmart
+ * @author Pablo Martin Mayoral
  */
 public class ventanaPaint extends javax.swing.JFrame {
 
@@ -74,8 +74,6 @@ public class ventanaPaint extends javax.swing.JFrame {
         //cargar usando control+o
         loadAction.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_O, KeyEvent.CTRL_DOWN_MASK));
         jMenuItem2.setAction(loadAction);
-        //intento para el control+z
-        backAction.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_Z, KeyEvent.CTRL_DOWN_MASK));
 
     }
 
@@ -159,12 +157,7 @@ public class ventanaPaint extends javax.swing.JFrame {
             carga();
         }
     };
-    Action backAction = new AbstractAction("back") {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-
-        }
-    };
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -576,6 +569,14 @@ public class ventanaPaint extends javax.swing.JFrame {
 
         } else if (herramientas1.formaElegida == 6) {
             miRecta.dibujate(bufferGraphics2, evt.getX(), evt.getY(), herramientas1.lineaGrosor);
+        }else if (herramientas1.formaElegida == 11) {
+            int xFlood = evt.getX();
+            int yFlood = evt.getY();
+            int rgb = buffer.getRGB(xFlood, yFlood);
+            Color c = new Color(rgb);
+            fill(xFlood, yFlood, c, colores1.colorSeleccionado);
+            jpanelGraphics.drawImage(buffer2, 0, 0, null);
+            bufferGraphics3.drawImage(buffer2, 0, 0, null);
         }
 
 
@@ -707,4 +708,8 @@ public class ventanaPaint extends javax.swing.JFrame {
     private javax.swing.JSlider jSlider1;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
+
+    private void fill(int xFlood, int yFlood, Color c, Color colorSeleccionado) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
