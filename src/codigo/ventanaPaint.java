@@ -543,6 +543,7 @@ public class ventanaPaint extends javax.swing.JFrame {
                 colores1.colorSeleccionado = c;
                 colores1.jLabel14.setBackground(colores1.colorSeleccionado);
                 break;
+                //crea el texto
             case 12:
                 Xtex = evt.getX();
                 Ytex = evt.getY();
@@ -569,14 +570,6 @@ public class ventanaPaint extends javax.swing.JFrame {
 
         } else if (herramientas1.formaElegida == 6) {
             miRecta.dibujate(bufferGraphics2, evt.getX(), evt.getY(), herramientas1.lineaGrosor);
-        }else if (herramientas1.formaElegida == 11) {
-            int xFlood = evt.getX();
-            int yFlood = evt.getY();
-            int rgb = buffer.getRGB(xFlood, yFlood);
-            Color c = new Color(rgb);
-            fill(xFlood, yFlood, c, colores1.colorSeleccionado);
-            jpanelGraphics.drawImage(buffer2, 0, 0, null);
-            bufferGraphics3.drawImage(buffer2, 0, 0, null);
         }
 
 
@@ -616,6 +609,7 @@ public class ventanaPaint extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1MousePressed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+       //metodo para poner blanca la pantalla de nuevo
         miLimpiar = new Limpiar();
         miLimpiar.dibujate(bufferGraphics2, jPanel1);
         bufferGraphics.drawImage(buffer2, 0, 0, null);
@@ -624,6 +618,7 @@ public class ventanaPaint extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+       //codigo para el deshacer
         if (retroceso.size() > 1) {
             bufferGraphics2.drawImage(retroceso.get(retroceso.size() - 1), 0, 0, null);
             retroceso.remove(retroceso.size() - 1);
@@ -632,7 +627,6 @@ public class ventanaPaint extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        //Ponemos un try por si el usuario introduce algo que no es un número
         jDialog3.setVisible(true);
 
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -709,7 +703,5 @@ public class ventanaPaint extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 
-    private void fill(int xFlood, int yFlood, Color c, Color colorSeleccionado) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
 }
